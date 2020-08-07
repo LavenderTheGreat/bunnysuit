@@ -163,10 +163,10 @@ switch(setting.mode){
                     line = line.split("//")[0] // Remove any comments
 
                     if (line.startsWith("Index ")) {
-                        moveAddress = parseInt(index.start, 16) + (parseInt(line.slice(6))*4)
+                        moveAddress = parseInt(index.start, 16) + (parseInt(line.slice(6).trim())*4)
                         // remove prefix, use it as index
                     } else if (line.startsWith("Address ")) {
-                        moveAddress = parseInt(line.slice(8), 16)
+                        moveAddress = parseInt(line.slice(8).trim(), 16)
                     } else {
                         // Just a byte line, not an index pointer
 
