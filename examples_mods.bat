@@ -1,0 +1,1 @@
+deno run --allow-read --allow-write bunny.js -rom SONICBATTLE.gba -mods mods -output SONICBATTLE_MODDED.gba

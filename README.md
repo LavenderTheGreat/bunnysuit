@@ -17,6 +17,14 @@ Moveset pointer patcher and dumper for Sonic Battle (US).
 
 ## Usage
 
+> It's worth noting there are two example batch files included with this which may be enough for most people. They assume there's a file named ``SONICBATTLE.gba`` in the folder (case sensitive) alongside a folder named ``mods`` and they do the following:
+>
+> - ``example_dump.bat`` - Dumps a txt with addresses, maybe useful for someone.
+>
+> - ``example_mods.bat`` - Writes mods to a rom and outputs it as SONICBATTLE_MODDED.gba.
+>
+> These should be sufficient for most people.
+
 ### Dumping data
 
 ```
@@ -62,7 +70,7 @@ If you wished to replace Sonic's idle, you'd check in the dumped file for where 
 ### Patching data
 
 ```
-deno run --allow-net --allow-read --allow-write bunny.js -rom SONICBATTLE.gba -patch patch -output SONICBATTLE_patch.gba
+deno run --allow-read --allow-write bunny.js -rom SONICBATTLE.gba -patch patch -output SONICBATTLE_patch.gba
 ```
 
 Will update the specified ROM with the patch file, then output it where specified. **Merge your patches.** It's as simple as copy paste.
@@ -72,7 +80,7 @@ Will update the specified ROM with the patch file, then output it where specifie
 For consumers, bunnysuit includes support for a mods folder argument to apply multiple patches as one:
 
 ```
-deno run --allow-net --allow-read --allow-write bunny.js -rom SONICBATTLE.gba -mods modsfolder -output SONICBATTLE_patch.gba
+deno run --allow-read --allow-write bunny.js -rom SONICBATTLE.gba -mods modsfolder -output SONICBATTLE_patch.gba
 ```
 
 This is functionally identical to patch except iteratively uses files in subdirectories.
