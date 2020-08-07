@@ -26,17 +26,9 @@ deno run --allow-net --allow-read --allow-write bunny.js -rom SONICBATTLE.gba -o
 Will return the following at data.txt:
 
 ```
-// Sonic Idle 00
-// Index 0 in the table 
-// Originally pointed at 52F7C
-
-00 00 F0 FF 00 00 00 10 00 04 1F 00 00 00 10 00 00 00 02 00 10 00 12 00 D0 00 11 00 18 00 33 00 B4 00 34 00 00 00 24 00 03 00 F0 FF 01 00 00 10 06 00 F0 FF 02 00 00 10 08 00 F0 FF 03 00 00 10 0A 00 F0 FF 04 00 00 10 0C 00 F0 FF 05 00 00 10 0D 00 F0 FF 00 00 FE FF
-
-// Sonic Running 01
-// Index 1 in the table
-// Originally pointed at 52FD4
-
-00 00 F0 FF 00 02 10 00 10 00 12 00 D0 00 11 00 80 07 1F 00 18 00 33 00 B4 00 34 00 00 00 24 00 08 00 00 10 04 00 F0 FF 0C 00 00 10 62 02 00 28 06 00 F0 FF 0D 00 00 10 08 00 F0 FF 0E 00 00 10 0A 00 F0 FF 0F 00 00 10 0C 00 F0 FF 10 00 00 10 0E 00 F0 FF 11 00 00 10 10 00 F0 FF 12 00 00 10 12 00 F0 FF 13 00 00 10 13 00 F0 FF 02 00 F0 00
+Index 0 (ED68A8) - Originally pointed at 52F7C - Sonic Idle 00
+Index 1 (ED68AC) - Originally pointed at 52FD4 - Sonic Idle 01
+...
 ```
 
 ### Loading patches
