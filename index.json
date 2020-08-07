@@ -1,0 +1,8 @@
+{
+    "addressLength": 4,
+    "reverseBytes": true,
+    "start":"ED68A8",
+    "length": 1399,
+    "dumpData": false,
+    "emptyStart": "F9EE20"
+}
