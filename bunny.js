@@ -9,11 +9,13 @@ const indexold = {
 
 const index = JSON.parse(Deno.readTextFileSync("index.json"))
 
-var patch = {}
+var patches = []
 
 var setting = {
     mode: "dump",
 }
+
+// Deno.readDirSync(directoryToScan)
 
 // Parse input arguments
 
@@ -50,11 +52,25 @@ Command examples:
             setting.patch = Deno.args[i + 1]
             console.log("Patch file: " + setting.patch)
             setting.mode = "patch"
-            patch = JSON.parse(Deno.readTextFileSync(Deno.args[i+1]))
+            patches.push(Deno.args[i+1] + "/")
+            i++
+            break;
+
+        case "-mods":
+            console.log("Mods folder: " + Deno.args[i+1])
+            setting.mode = "patch"
+            for (const mod of Deno.readDirSync(Deno.args[i+1] + "/")){
+                if (mod.isDirectory){
+                    console.log("Patch in " + Deno.args[i+1] + ": " + mod.name)
+                    patches.push(Deno.args[i+1] + "/" + mod.name + "/")
+                }
+            }
             i++
             break;
     }
 }
+
+//console.log(patches)
 
 // Check for errors within them
 
@@ -68,7 +84,7 @@ if (setting.output == undefined){
 
 // Now run
 
-const file = Deno.readFileSync(setting.input)
+//const file = Deno.readFileSync(setting.input)
 
 switch(setting.mode){
     case "dump":
@@ -87,19 +103,80 @@ switch(setting.mode){
         
     case "patch":
         // current data offset
-        const currentOffset = index.emptyStart // convert index from string!
+        console.log(index.emptyStart)
+        let currentOffset = parseInt(index.emptyStart, 16) // convert index from string!
 
-        // Iterate over patch patches 
-        for (const currentPatch of patch){
-            // convert move data to bytes
+        let rom = Deno.readFileSync(setting.input)
 
-            // insert movedata at currentoffset
+        // Iterate over patch indexes
+        for (const patch of patches){
+            for (const file of Deno.readDirSync(patch)){
+                //console.log(patch + file.name)
 
-            // change pointer at index to currentoffset converted to the format
+                let data = Deno.readTextFileSync(patch + file.name)
 
-            // add length of movedata to currentoffset
+                const patchName = patch + file.name
 
-            // next
+                console.log("Parsing patch " + patchName + "...")
+
+                // Split into lines
+                data = data.split(/[\r\n]+/)
+
+                let parsedData = "" // Data when parsed into a string of bytes ie no comments, no first line
+
+                let moveIndex = undefined
+
+                // iterate over lines
+                for (var line of data) {
+                    line = line.split("//")[0] // Remove any comments
+
+                    if (line.startsWith("Index ")) {
+                        moveIndex = parseInt(line.slice(6)) // remove prefix, use it as index
+                    } else {
+                        // Just a byte line, not an index pointer
+
+                        line = line.replace(/[^A-Fa-f0-9]/g, "") // Remove non hex characters on the line
+
+                        parsedData = parsedData + line
+                    }
+                }
+                
+                //console.log(parsedData)
+
+                // Write into the file
+
+                console.log("Writing patch " + patchName + " to empty space...")
+
+                for (let i = 0; i < parsedData.length; i+= 2){
+                    // Offset + bit in data chunk (has to be div by 2 since we're working in pairs) = current byte
+                    //console.log((parsedData[i] + parsedData [i+1]) + " - " + parseInt(parsedData[i] + parsedData[i + 1], 16))
+                    rom[currentOffset + (i/2)] = parseInt(parsedData[i] + parsedData[i + 1], 16)
+                }
+
+                // Write our pointer into the file
+
+                console.log("Writing pointer to patch " + patchName + "...")
+
+                let address = battleLib.toHexString(currentOffset + 0x08000000, 8) // 0x08000000 is an offset for the gba to read from ROM
+
+                console.log("Address (Raw): " + address)
+                address = battleLib.reversePairs(address)
+                console.log("Address (ROM Format): " + address)
+
+                for (let i = 0; i < 8; i+= 2){
+                    // Table offset + index + bit in data chunk (has to be div by 2 since we're working in pairs) = current byte
+                    //console.log("Byte: " + address[i] + address[i + 1])
+                    rom[parseInt(index.start, 16) + (moveIndex*4) + i/2] = parseInt(address[i] + address[i + 1], 16)
+                }
+
+                console.log("Written patch!")
+
+                // Update current offset
+
+                currentOffset = currentOffset + (parsedData.length / 2) // Parsed data is just the pairs for bytes, so we can divide it by two to get byte length.
+            }
         }
+
+        Deno.writeFileSync(setting.output, rom)
         break;
 }
