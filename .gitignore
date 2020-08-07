@@ -2,3 +2,6 @@
 ignore
 ignore/
 logo.png
+mods/
+*.sbp
+*.gba
