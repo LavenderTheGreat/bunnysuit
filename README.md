@@ -59,13 +59,13 @@ Patches should be stored in a format where their bytes are written as hex as a S
 0000F0FF0000001000041F00000010000000020010001200D000110018003300B4003400000024000300F0FF010000100600F0FF020000100800F0FF030000100A00F0FF040000100C00F0FF050000100D00F0FF0000FEFF
 ```
 
-As bytes, alternatively, you can store your patch data as bin files, which are more compact but harder to read.
+As a bytestring.
 
 SBP files also include their index always as line 1, which means they can have better names (ie Sonic Idle instead of 0).
 
 It's recommended to use SBP files.
 
-If you wished to replace Sonic's idle, you'd check in the dumped file for where your desired pointer is (ours is index 0), you'd put in your data to replace as a SBP text file, with the index on the first line as ``0`` in the folder and name it what you want ie ``Sonic Stand.sbp`` or alternatively, if it was a bin file, if should be named ``0.bin``.
+If you wished to replace Sonic's idle, you'd check in the dumped file for where your desired pointer is (ours is index 0), you'd put in your data to replace as a SBP text file, with the index on the first line as ``0`` in the folder and name it what you want ie ``Sonic Stand.sbp``.
 
 ### Patching data
 
