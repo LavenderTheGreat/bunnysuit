@@ -156,14 +156,17 @@ switch(setting.mode){
 
                 let parsedData = "" // Data when parsed into a string of bytes ie no comments, no first line
 
-                let moveIndex = undefined
+                let moveAddress = undefined
 
                 // iterate over lines
                 for (var line of data) {
                     line = line.split("//")[0] // Remove any comments
 
                     if (line.startsWith("Index ")) {
-                        moveIndex = parseInt(line.slice(6)) // remove prefix, use it as index
+                        moveAddress = parseInt(index.start, 16) + (parseInt(line.slice(6))*4)
+                        // remove prefix, use it as index
+                    } else if (line.startsWith("Address ")) {
+                        moveAddress = parseInt(line.slice(8), 16)
                     } else {
                         // Just a byte line, not an index pointer
 
@@ -198,7 +201,7 @@ switch(setting.mode){
                 for (let i = 0; i < 8; i+= 2){
                     // Table offset + index + bit in data chunk (has to be div by 2 since we're working in pairs) = current byte
                     //console.log("Byte: " + address[i] + address[i + 1])
-                    rom[parseInt(index.start, 16) + (moveIndex*4) + i/2] = parseInt(address[i] + address[i + 1], 16)
+                    rom[moveAddress + i/2] = parseInt(address[i] + address[i + 1], 16)
                 }
 
                 console.log("Written patch!")
