@@ -9,6 +9,8 @@ const indexold = {
 
 const index = JSON.parse(Deno.readTextFileSync("index.json"))
 
+const comments = JSON.parse(Deno.readTextFileSync("comments.json"))
+
 var patches = []
 
 var setting = {
@@ -86,27 +88,57 @@ if (setting.output == undefined){
 
 //const file = Deno.readFileSync(setting.input)
 
+let rom = Deno.readFileSync(setting.input)
+
 switch(setting.mode){
     case "dump":
-        for (let i = 0; i < index.movesCount; i++){
-            // Get move offset from encoded offset
-            const offset = battleLib.readMoveOffset(file, index.start + (index.addressLength*i), index.addressLength)
-            if (offset < 0){
-                // move is invalid
-                console.log("Move index " + i + " is invalid. This is PERFECTLY NORMAL on real ROMs in a good amount of cases.")
-            } else {
-                // move is valid
-                console.log("Reading move at " + offset.toString(16) + " (Move number " + i + ")...")
+        let result = ""
+
+        for (let i = 0; i < index.length; i++){ //index.length
+            const address = {
+                number: parseInt(index.start, 16) + (i*4),
+                string: battleLib.toHexString(parseInt(index.start, 16) + (i*4), 8),
             }
+            
+            let currentValue = ""
+            
+            //console.log("i" + address.number)
+
+            // Attach bytes together
+            for (let x = 3; x > -1; x-=1){
+                let current = address.number + x
+                //console.log(current.toString(16) + ": " + rom[current])
+                currentValue = currentValue + battleLib.toHexString(rom[current], 2)
+            }
+
+            //console.log(currentValue)
+
+            // Subtract, convert them back
+
+            currentValue = battleLib.toHexString(parseInt(currentValue, 16) - 0x08000000, 8)
+
+            let currentComment = {}
+
+            for (const comment of comments){
+                if ((comment.index != undefined && comment.index == i) || (comment.address != undefined && comment.address == address.string)){
+                    currentComment = comment
+                }
+            }
+
+            result = result + (`Index ${i} (${address.string}) - Originally pointed at ${currentValue} - ${currentComment.comment || "Unknown"}
+`)
+
         }
+
+        Deno.writeTextFileSync(setting.output, result)
+        console.log("Written!")
+
         break;
         
     case "patch":
         // current data offset
         console.log(index.emptyStart)
         let currentOffset = parseInt(index.emptyStart, 16) // convert index from string!
-
-        let rom = Deno.readFileSync(setting.input)
 
         // Iterate over patch indexes
         for (const patch of patches){
