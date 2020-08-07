@@ -75,28 +75,6 @@ deno run --allow-net --allow-read --allow-write bunny.js -rom SONICBATTLE.gba -p
 
 Will update the specified ROM with the patch file, then output it where specified. **Merge your patches.** It's as simple as copy paste.
 
-### Creating an index file
-
-Index files must be in json format and look like the following:
-
-```json
-{
-    "addressLength": 4,
-    "reverseBytes": true,
-    "start":"ED68A8",
-    "length": 1399,
-    "dumpData": false
-}
-```
-
-- ``addressLength`` - Length of a pointer in bytes.
-- ``reverseBytes`` - Whether bytes should be reversed when importing/exporting pointer data. For THQ/Sonic Advance games.
-- ``start`` - Where the pointer table starts.
-- ``length`` - Length in pointers of the table.
-- ``dumpData`` - Whether to dump all data from the current byte to the next pointer's byte. This is useful for some things but not for others.
-
-Index files must be called index.json to be detected.
-
 ### Mods folder
 
 For consumers, bunnysuit includes support for a mods folder argument to apply multiple patches as one:
