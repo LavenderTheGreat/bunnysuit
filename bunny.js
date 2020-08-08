@@ -72,8 +72,6 @@ Command examples:
     }
 }
 
-//console.log(patches)
-
 // Check for errors within them
 
 if (setting.input == undefined){
@@ -86,14 +84,13 @@ if (setting.output == undefined){
 
 // Now run
 
-//const file = Deno.readFileSync(setting.input)
-
 let rom = Deno.readFileSync(setting.input)
 
 switch(setting.mode){
     case "dump":
         let result = ""
 
+        // Iterate over moves listed
         for (let i = 0; i < index.length; i++){ //index.length
             const address = {
                 number: parseInt(index.start, 16) + (i*4),
@@ -101,21 +98,18 @@ switch(setting.mode){
             }
             
             let currentValue = ""
-            
-            //console.log("i" + address.number)
 
             // Attach bytes together
             for (let x = 3; x > -1; x-=1){
                 let current = address.number + x
-                //console.log(current.toString(16) + ": " + rom[current])
                 currentValue = currentValue + battleLib.toHexString(rom[current], 2)
             }
-
-            //console.log(currentValue)
 
             // Subtract, convert them back
 
             currentValue = battleLib.toHexString(parseInt(currentValue, 16) - 0x08000000, 8)
+
+            // Find a comment that matches the current address
 
             let currentComment = {}
 
@@ -125,6 +119,7 @@ switch(setting.mode){
                 }
             }
 
+            // Append the address
             result = result + (`Index ${i} (${address.string}) - Originally pointed at ${currentValue} - ${currentComment.comment || "Unknown"}
 `)
 
@@ -140,75 +135,84 @@ switch(setting.mode){
         console.log(index.emptyStart)
         let currentOffset = parseInt(index.emptyStart, 16) // convert index from string!
 
-        // Iterate over patch indexes
+        // Iterate over patch folders
         for (const patch of patches){
+            // Iterate over patch files
             for (const file of Deno.readDirSync(patch)){
-                //console.log(patch + file.name)
 
-                let data = Deno.readTextFileSync(patch + file.name)
+                if (file.name.toLowerCase().endsWith(".sbp") && !file.isDirectory) {
+                    // If it's a patch file and not a directory.
 
-                const patchName = patch + file.name
+                    // Read file, store name, preparation work.
+                    let data = Deno.readTextFileSync(patch + file.name)
 
-                console.log("Parsing patch " + patchName + "...")
+                    const patchName = patch + file.name
 
-                // Split into lines
-                data = data.split(/[\r\n]+/)
+                    console.log("Parsing patch " + patchName + "...")
 
-                let parsedData = "" // Data when parsed into a string of bytes ie no comments, no first line
+                    // Split into lines
+                    data = data.split(/[\r\n]+/)
 
-                let moveAddress = undefined
+                    let parsedData = "" // Data when parsed into a string of bytes ie no comments, no first line, added to.
 
-                // iterate over lines
-                for (var line of data) {
-                    line = line.split("//")[0] // Remove any comments
+                    // Where we store the pointer address to overwrite
+                    let moveAddress = undefined
 
-                    if (line.startsWith("Index ")) {
-                        moveAddress = parseInt(index.start, 16) + (parseInt(line.slice(6).trim())*4)
-                        // remove prefix, use it as index
-                    } else if (line.startsWith("Address ")) {
-                        moveAddress = parseInt(line.slice(8).trim(), 16)
-                    } else {
-                        // Just a byte line, not an index pointer
+                    // iterate over lines
+                    for (var line of data) {
+                        // Remove any comments
+                        line = line.split("//")[0] 
 
-                        line = line.replace(/[^A-Fa-f0-9]/g, "") // Remove non hex characters on the line
+                        if (line.startsWith("Index ")) {
+                            // remove prefix, use it as the address after adding it to the start
+                            moveAddress = parseInt(index.start, 16) + (parseInt(line.slice(6).trim())*4)
 
-                        parsedData = parsedData + line
+                        } else if (line.startsWith("Address ")) {
+                            // Set the address
+                            moveAddress = parseInt(line.slice(8).trim(), 16)
+
+                        } else {
+                            // Just a byte line, not an index pointer, just remove junk from it.
+
+                            line = line.replace(/[^A-Fa-f0-9]/g, "") // Remove non hex characters on the line
+
+                            // Add to parsed data
+                            parsedData = parsedData + line
+                        }
                     }
+
+                    // Write into the file
+
+                    console.log("Writing patch " + patchName + " to empty space...")
+
+                    // Overwrite our bytes in the file
+                    for (let i = 0; i < parsedData.length; i+= 2){
+                        // Offset + bit in data chunk (has to be div by 2 since we're working in pairs) = current byte
+                        rom[currentOffset + (i/2)] = parseInt(parsedData[i] + parsedData[i + 1], 16)
+                    }
+
+                    // Write our pointer into the file
+
+                    console.log("Writing pointer to patch " + patchName + "...")
+
+                    let address = battleLib.toHexString(currentOffset + 0x08000000, 8) // 0x08000000 is an offset for the gba to read from ROM
+
+                    console.log("Address (Raw): " + address)
+                    address = battleLib.reversePairs(address)
+                    console.log("Address (ROM Format): " + address)
+
+                    // Write pointer into file
+                    for (let i = 0; i < 8; i+= 2){
+                        // Table offset + index + bit in data chunk (has to be div by 2 since we're working in pairs) = current byte
+                        rom[moveAddress + i/2] = parseInt(address[i] + address[i + 1], 16)
+                    }
+
+                    console.log("Written patch!")
+
+                    // Update current offset
+
+                    currentOffset = currentOffset + (parsedData.length / 2) // Parsed data is just the pairs for bytes, so we can divide it by two to get byte length.
                 }
-                
-                //console.log(parsedData)
-
-                // Write into the file
-
-                console.log("Writing patch " + patchName + " to empty space...")
-
-                for (let i = 0; i < parsedData.length; i+= 2){
-                    // Offset + bit in data chunk (has to be div by 2 since we're working in pairs) = current byte
-                    //console.log((parsedData[i] + parsedData [i+1]) + " - " + parseInt(parsedData[i] + parsedData[i + 1], 16))
-                    rom[currentOffset + (i/2)] = parseInt(parsedData[i] + parsedData[i + 1], 16)
-                }
-
-                // Write our pointer into the file
-
-                console.log("Writing pointer to patch " + patchName + "...")
-
-                let address = battleLib.toHexString(currentOffset + 0x08000000, 8) // 0x08000000 is an offset for the gba to read from ROM
-
-                console.log("Address (Raw): " + address)
-                address = battleLib.reversePairs(address)
-                console.log("Address (ROM Format): " + address)
-
-                for (let i = 0; i < 8; i+= 2){
-                    // Table offset + index + bit in data chunk (has to be div by 2 since we're working in pairs) = current byte
-                    //console.log("Byte: " + address[i] + address[i + 1])
-                    rom[moveAddress + i/2] = parseInt(address[i] + address[i + 1], 16)
-                }
-
-                console.log("Written patch!")
-
-                // Update current offset
-
-                currentOffset = currentOffset + (parsedData.length / 2) // Parsed data is just the pairs for bytes, so we can divide it by two to get byte length.
             }
         }
 
