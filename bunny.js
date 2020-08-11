@@ -114,7 +114,7 @@ switch(setting.mode){
             let currentComment = {}
 
             for (const comment of comments){
-                if ((comment.index != undefined && comment.index == i) || (comment.address != undefined && comment.address == address.string)){
+                if ((comment.index != undefined && comment.index == i) || (comment.address != undefined && comment.address == address.string) || (comment.value != undefined && comment.value.toLowerCase() == currentValue.toLowerCase())){
                     currentComment = comment
                 }
             }
