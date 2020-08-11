@@ -6,4 +6,4 @@ mods/
 *.sbp
 *.gba
 *.sav
-addresses.txt
+addresses*
