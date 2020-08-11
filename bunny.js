@@ -156,7 +156,7 @@ switch(setting.mode){
                     let parsedData = "" // Data when parsed into a string of bytes ie no comments, no first line, added to.
 
                     // Where we store the pointer address to overwrite
-                    let moveAddress = undefined
+                    let pointerAddresses = []
 
                     // iterate over lines
                     for (var line of data) {
@@ -165,11 +165,11 @@ switch(setting.mode){
 
                         if (line.startsWith("Index ")) {
                             // remove prefix, use it as the address after adding it to the start
-                            moveAddress = parseInt(index.start, 16) + (parseInt(line.slice(6).trim())*4)
+                            pointerAddresses.push(parseInt(index.start, 16) + (parseInt(line.slice(6).trim())*4))
 
                         } else if (line.startsWith("Address ")) {
                             // Set the address
-                            moveAddress = parseInt(line.slice(8).trim(), 16)
+                            pointerAddresses.push(parseInt(line.slice(8).trim(), 16))
 
                         } else {
                             // Just a byte line, not an index pointer, just remove junk from it.
@@ -195,16 +195,21 @@ switch(setting.mode){
 
                     console.log("Writing pointer to patch " + patchName + "...")
 
+                    // Target address to point at
                     let address = battleLib.toHexString(currentOffset + 0x08000000, 8) // 0x08000000 is an offset for the gba to read from ROM
 
                     console.log("Address (Raw): " + address)
                     address = battleLib.reversePairs(address)
                     console.log("Address (ROM Format): " + address)
 
-                    // Write pointer into file
-                    for (let i = 0; i < 8; i+= 2){
-                        // Table offset + index + bit in data chunk (has to be div by 2 since we're working in pairs) = current byte
-                        rom[moveAddress + i/2] = parseInt(address[i] + address[i + 1], 16)
+                    // Write the pointers into file
+
+                    for (var pointer = 0; pointer < pointerAddresses.length; pointer++){
+                        console.log("Writing pointer at " + battleLib.toHexString(pointerAddresses[pointer], 8) + "... (" + (pointer + 1) + "/" + pointerAddresses.length + ")")
+                        for (let i = 0; i < 8; i+= 2){
+                            // Table offset + index + bit in data chunk (has to be div by 2 since we're working in pairs) = current byte
+                            rom[pointerAddresses[pointer] + i/2] = parseInt(address[i] + address[i + 1], 16)
+                        }
                     }
 
                     console.log("Written patch!")
