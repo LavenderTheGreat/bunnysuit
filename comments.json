@@ -1,254 +1,65 @@
 [
-    {
-        "value":"00052F7C",
-        "comment":"Sonic - Idle"
-    },
-    {
-        "value":"00052FD4",
-        "comment":"Sonic - Running (Anim index 01)"
-    },
-    {
-        "value":"00053044",
-        "comment":"Sonic - Possible running loop? (Anim index 02)"
-    },
-    {
-        "value":"0005308C",
-        "comment":"Sonic - Stopping (Anim index 03)"
-    },
-    {
-        "value":"000530C8",
-        "comment":"Sonic - Dash (Anim index 04)"
-    },
-    {
-        "value":"00053158",
-        "comment":"Sonic - Running turn around (Anim index ??)"
-    },
-    {
-        "value":"0005318C",
-        "comment":"Sonic - Standing turn around (Anim index 05)"
-    },
-    {
-        "value":"000531C0",
-        "comment":"Sonic - Falling (Anim index 06)"
-    },
-    {
-        "value":"00053238",
-        "comment":"Sonic - Jumping (Anim index 07)"
-    },
-    {
-        "value":"00053284",
-        "comment":"Sonic - Landing (Anim index 08)"
-    },
-    {
-        "value":"000532C0",
-        "comment":"Sonic - Air dash (Anim index 09)"
-    },
-    {
-        "value":"00053334",
-        "comment":"Sonic - Standard combo 1 (Anim index 0A)"
-    },
-    {
-        "value":"000533AC",
-        "comment":"Sonic - Standard combo 2 (Anim index 0B)"
-    },
-    {
-        "value":"00053424",
-        "comment":"Sonic - Standard combo 3 (Anim index 0C)"
-    },
-    {
-        "value":"000534AC",
-        "comment":"Sonic - Heavy attack (Anim index 0D)"
-    },
-    {
-        "value":"000535A0",
-        "comment":"Sonic - Upper attack (Anim index ??)"
-    },
-    {
-        "value":"0005362C",
-        "comment":"Sonic - Dash attack (Anim index ??)"
-    },
-    {
-        "value":"000536B0",
-        "comment":"Sonic - Eagle Kick (Pursuit attack) (Anim index ??)"
-    },
-    {
-        "value":"000537A0",
-        "comment":"Sonic - Eagle Kick (Standard) (Anim index ??)"
-    },
-    {
-        "value":"00053818",
-        "comment":"Sonic - Unknown variant of Eagle Kick (Anim index ??)"
-    },
-    {
-        "value":"0005389C",
-        "comment":"Sonic - Air attack (Anim index ??)"
-    },
-    {
-        "value":"00053914",
-        "comment":"Sonic - Shot attack (Left/Right) (Anim index ??)"
-    },
-    {
-        "value":"00053A20",
-        "comment":"Sonic - Unknown cut into a fall (Anim index ??)"
-    },
-    {
-        "value":"00053A28",
-        "comment":"Sonic - Unknown cut into a fall (2) (Anim index ??)"
-    },
-    {
-        "value":"00053A30",
-        "comment":"Sonic - Unknown left/right shot/spindash data (Anim index ??)"
-    },
-    {
-        "value":"00053B38",
-        "comment":"Sonic - Ground Power attack (Ring throw) (Anim index ??)"
-    },
-    {
-        "value":"00053BAC",
-        "comment":"Sonic - Shot attack (Down) (Anim index ??)"
-    },
-    {
-        "value":"00053C98",
-        "comment":"Sonic - Unknown idle reset (Anim index ??)"
-    },
-    {
-        "value":"00053CA0",
-        "comment":"Sonic - Aerial trap (Anim index ??)"
-    },
-    {
-        "value":"00053D78",
-        "comment":"Sonic - Unknown down shot/spindash data (Anim index ??)"
-    },
-    {
-        "value":"000B3DD0",
-        "comment":"Sonic - Unknown down shot/spindash data (Labelled as up on Glimmer's findings???) (Anim index ??)"
-    },
-    {
-        "value":"00053E2C",
-        "comment":"Sonic - Grounded Trap (Anim index ??)"
-    },
-    {
-        "value":"00053EB4",
-        "comment":"Sonic - Unknown idle reset (Anim index ??)"
-    },
-    {
-        "value":"00053EBC",
-        "comment":"Sonic - Weird idle->punch->aerial flicker animation (Anim index ??)"
-    },
-    {
-        "value":"00053F48",
-        "comment":"Sonic - Unknown idle reset (Anim index ??)"
-    },
-    {
-        "value":"00053F50",
-        "comment":"Sonic - Getting hit (Anim index ??)"
-    },
-    {
-        "value":"00053F8C",
-        "comment":"Sonic - Getting flung back (Anim index ??)"
-    },
-    {
-        "value":"0005408C",
-        "comment":"Sonic - Getting knocked into the air (Anim index ??)"
-    },
-    {
-        "value":"00054104",
-        "comment":"Sonic - Unknown but related to getting knocked into the air (Anim index ??)"
-    },
-    {
-        "value":"0005417C",
-        "comment":"Sonic - Unknown but related getting hit animation (Anim index ??)"
-    },
-    {
-        "value":"000541CC",
-        "comment":"Sonic - Unknown but related getting hit animation (Anim index ??)"
-    },
-    {
-        "value":"00054214",
-        "comment":"Sonic - Getting back up (Anim index ??)"
-    },
-    {
-        "value":"00054268",
-        "comment":"Sonic - Seemingly a duplicate of Getting Back Up (Anim index ??)"
-    },
-    {
-        "value":"000542CC",
-        "comment":"Sonic - Landing (After being hit) (Anim index ??)"
-    },
-    {
-        "value":"000543C0",
-        "comment":"Sonic - Getting back up (After landing after being hit) (Anim index ??)"
-    },
-    {
-        "value":"0005441C",
-        "comment":"Sonic - Unknown but related to being launched into the air (Anim index ??)"
-    },
-    {
-        "value":"00054490",
-        "comment":"Sonic - More of getting flung back (Anim index ??)"
-    },
-    {
-        "value":"000545A4",
-        "comment":"Sonic - Knocked back into the air and falling (??) (Anim index ??)"
-    },
-    {
-        "value":"00054618",
-        "comment":"Sonic - Getting hit normally then getting back up? (Anim index ??)"
-    },
-    {
-        "value":"0005467C",
-        "comment":"Sonic - Knocked into the air? (Anim index ??)"
-    },
-    {
-        "value":"000546F4",
-        "comment":"Sonic - Related to getting backup? (Anim index ??)"
-    },
-    {
-        "value":"0005472C",
-        "comment":"Sonic - Start to get back then initiate idle? (Anim index ??)"
-    },
-    {
-        "value":"00054798",
-        "comment":"Sonic - More getting back on feet? (Anim index ??)"
-    },
-    {
-        "value":"000547D0",
-        "comment":"Sonic - First two frames of getting back on feet? (Anim index ??)"
-    },
-    {
-        "value":"000547F8",
-        "comment":"Sonic - Possible duplicate of getting back on feet? (Anim index ??)"
-    },
-    {
-        "value":"00054818",
-        "comment":"Sonic - Shield stun (Anim index ??)"
-    },
-    {
-        "value":"00054858",
-        "comment":"Sonic - Healing startup (First frame) (Anim index ??)"
-    },
-    {
-        "value":"00054870",
-        "comment":"Sonic - Healing loop (Anim index ??)"
-    },
-    {
-        "value":"000548C8",
-        "comment":"Sonic - Healing end (Anim index ??)"
-    },
-    {
-        "value":"0005490C",
-        "comment":"Sonic - Wall jump (Anim index ??)"
-    },
-    {
-        "value":"00054924",
-        "comment":"Sonic - First two frames of being knocked into the air looped (Anim index ??)"
-    },
-    {
-        "value":"0005499C",
-        "comment":"Sonic - Landing then death animation (Anim index ??)"
-    },
-    {
-        "value":"00054A0C",
-        "comment":"Sonic - Respawn icon (Anim index ??)"
-    }
+    {"value": "00052F7C", "comment": "Sonic - Idle", "anim": "00"},
+    {"value": "00052FD4", "comment": "Sonic - Running", "anim": "01"},
+    {"value": "00053044", "comment": "Sonic - Possible running loop?", "anim": "02"},
+    {"value": "0005308C", "comment": "Sonic - Stopping", "anim": "03"},
+    {"value": "000530C8", "comment": "Sonic - Dash", "anim": "04"},
+    {"value": "00053158", "comment": "Sonic - Running turn around"},
+    {"value": "0005318C", "comment": "Sonic - Standing turn around", "anim": "05"},
+    {"value": "000531C0", "comment": "Sonic - Falling", "anim": "06"},
+    {"value": "00053238", "comment": "Sonic - Jumping", "anim": "07"},
+    {"value": "00053284", "comment": "Sonic - Landing", "anim": "08"},
+    {"value": "000532C0", "comment": "Sonic - Air dash", "anim": "09"},
+    {"value": "00053334", "comment": "Sonic - Standard combo 1", "anim": "0A"},
+    {"value": "000533AC", "comment": "Sonic - Standard combo 2", "anim": "0B"},
+    {"value": "00053424", "comment": "Sonic - Standard combo 3", "anim": "0C"},
+    {"value": "000534AC", "comment": "Sonic - Heavy attack", "anim": "0D"},
+    {"value": "000535A0", "comment": "Sonic - Upper attack"},
+    {"value": "0005362C", "comment": "Sonic - Dash attack"},
+    {"value": "000536B0", "comment": "Sonic - Eagle Kick (Pursuit attack)"},
+    {"value": "000537A0", "comment": "Sonic - Eagle Kick (Standard)"},
+    {"value": "00053818", "comment": "Sonic - Unknown variant of Eagle Kick"},
+    {"value": "0005389C", "comment": "Sonic - Air attack"},
+    {"value": "00053914", "comment": "Sonic - Shot attack (Left/Right)"},
+    {"value": "00053A20", "comment": "Sonic - Unknown cut into a fall"},
+    {"value": "00053A28", "comment": "Sonic - Unknown cut into a fall (2)"},
+    {"value": "00053A30", "comment": "Sonic - Unknown left/right shot/spindash data"},
+    {"value": "00053B38", "comment": "Sonic - Ground Power attack (Ring throw)"},
+    {"value": "00053BAC", "comment": "Sonic - Shot attack (Down)"},
+    {"value": "00053C98", "comment": "Sonic - Unknown idle reset"},
+    {"value": "00053CA0", "comment": "Sonic - Aerial trap"},
+    {"value": "00053D78", "comment": "Sonic - Unknown down shot/spindash data"},
+    {"value": "000B3DD0", "comment": "Sonic - Unknown down shot/spindash data (Labelled as up on Glimmer's findings???"},
+    {"value": "00053E2C", "comment": "Sonic - Grounded Trap"},
+    {"value": "00053EB4", "comment": "Sonic - Unknown idle reset"},
+    {"value": "00053EBC", "comment": "Sonic - Weird idle->punch->aerial flicker animation"},
+    {"value": "00053F48", "comment": "Sonic - Unknown idle reset"},
+    {"value": "00053F50", "comment": "Sonic - Getting hit"},
+    {"value": "00053F8C", "comment": "Sonic - Getting flung back"},
+    {"value": "0005408C", "comment": "Sonic - Getting knocked into the air"},
+    {"value": "00054104", "comment": "Sonic - Unknown but related to getting knocked into the air"},
+    {"value": "0005417C", "comment": "Sonic - Unknown but related getting hit animation"},
+    {"value": "000541CC", "comment": "Sonic - Unknown but related getting hit animation"},
+    {"value": "00054214", "comment": "Sonic - Getting back up"},
+    {"value": "00054268", "comment": "Sonic - Seemingly a duplicate of Getting Back Up"},
+    {"value": "000542CC", "comment": "Sonic - Landing (After being hit)"},
+    {"value": "000543C0", "comment": "Sonic - Getting back up (After landing after being hit)"},
+    {"value": "0005441C", "comment": "Sonic - Unknown but related to being launched into the air"},
+    {"value": "00054490", "comment": "Sonic - More of getting flung back"},
+    {"value": "000545A4", "comment": "Sonic - Knocked back into the air and falling (??"},
+    {"value": "00054618", "comment": "Sonic - Getting hit normally then getting back up?"},
+    {"value": "0005467C", "comment": "Sonic - Knocked into the air?"},
+    {"value": "000546F4", "comment": "Sonic - Related to getting backup?"},
+    {"value": "0005472C", "comment": "Sonic - Start to get back then initiate idle?"},
+    {"value": "00054798", "comment": "Sonic - More getting back on feet?"},
+    {"value": "000547D0", "comment": "Sonic - First two frames of getting back on feet?"},
+    {"value": "000547F8", "comment": "Sonic - Possible duplicate of getting back on feet?"},
+    {"value": "00054818", "comment": "Sonic - Shield stun"},
+    {"value": "00054858", "comment": "Sonic - Healing startup (First frame)"},
+    {"value": "00054870", "comment": "Sonic - Healing loop"},
+    {"value": "000548C8", "comment": "Sonic - Healing end"},
+    {"value": "0005490C", "comment": "Sonic - Wall jump"},
+    {"value": "00054924", "comment": "Sonic - First two frames of being knocked into the air looped"},
+    {"value": "0005499C", "comment": "Sonic - Landing then death animation"},
+    {"value": "00054A0C", "comment": "Sonic - Respawn icon"}
 ]
