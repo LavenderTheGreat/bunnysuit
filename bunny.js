@@ -15,6 +15,7 @@ var patches = []
 
 var setting = {
     mode: "dump",
+    strict: false
 }
 
 // Deno.readDirSync(directoryToScan)
@@ -69,6 +70,11 @@ Command examples:
             }
             i++
             break;
+
+        case "-strict":
+            setting.strict = true
+            console.log("Strict mode enabled for dumping this run.")
+            break;
     }
 }
 
@@ -88,7 +94,9 @@ let rom = Deno.readFileSync(setting.input)
 
 switch(setting.mode){
     case "dump":
-        let result = ""
+        let result = `|Comment|Originally pointed at|Animation index|Pointer Location|Pointer index in table|
+|:------|:-------------------:|:-------------:|:--------------:|:--------------------:|
+`
 
         // Iterate over moves listed
         for (let i = 0; i < index.length; i++){ //index.length
@@ -119,9 +127,11 @@ switch(setting.mode){
                 }
             }
 
-            // Append the address
-            result = result + (`Index ${i} (${address.string}) - Originally pointed at ${currentValue} - ${currentComment.comment || "Unknown"}
+            // Append the address if either not strict or strict and the comment exists
+            if ( (setting.strict && currentComment.comment) || (!setting.strict) ){
+                result = result + (`| ${currentComment.comment || "Unknown"} | \`\`${currentValue.toUpperCase()}\`\` | ${currentComment.anim ? ("``" + currentComment.anim + "``") : ""} |  \`\`${address.string.toUpperCase()}\`\` | ${i} |
 `)
+            }
 
         }
 
