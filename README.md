@@ -15,6 +15,10 @@ Moveset pointer patcher and dumper for Sonic Battle (US).
 
 - Utilises a 'data' file which can be used to annotate pointer indexes.
 
+## Other useful resources
+
+- [Address list](https://github.com/LavenderTheGreat/bunnysuit/blob/master/addresslist.md) - Contains pointers and comments on many addresses and moves.
+
 ## Usage
 
 > It's worth noting there are two example batch files included with this which may be enough for most people. They assume there's a file named ``SONICBATTLE.gba`` in the folder (case sensitive) alongside a folder named ``mods`` and they do the following:
@@ -154,3 +158,7 @@ Pointers can be referred to in two ways from an SBP, their index from the pointe
 Index 0 // Index 0 from pointer origin
 Address 000000 // Pointer starting at 000000
 ```
+
+### Finding pointers
+
+With the advent of the advanced, strict dumper, there is now an address list available **[here](https://github.com/LavenderTheGreat/bunnysuit/blob/master/addresslist.md).**
