@@ -21,6 +21,12 @@ Moveset pointer patcher and dumper for Sonic Battle (US).
 
 - [ANIMDATA docs](https://github.com/LavenderTheGreat/bunnysuit/blob/master/movedata.md) - An attempt to document the animation data (shortened to animdata) format.
 
+- [Reformatted Animation Reverse Engineering document](https://github.com/LavenderTheGreat/bunnysuit/blob/master/docData/allFrames.txt) - Attempt to reformat it to be more standardised.
+
+   - [Only short frames](https://github.com/LavenderTheGreat/bunnysuit/blob/master/docData/shortFrames.txt) - Filter to only 8 byte long frames, not all inclusive.
+
+   - [Only initialisation frames](https://github.com/LavenderTheGreat/bunnysuit/blob/master/docData/initFrames.txt) - Only first frames of animations, give or take some labelled look alikes.
+
 ## Usage
 
 > It's worth noting there are two example batch files included with this which may be enough for most people. They assume there's a file named ``SONICBATTLE.gba`` in the folder (case sensitive) alongside a folder named ``mods`` and they do the following:
