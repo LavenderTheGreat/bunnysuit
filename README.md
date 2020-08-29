@@ -19,6 +19,8 @@ Moveset pointer patcher and dumper for Sonic Battle (US).
 
 - [Address list](https://github.com/LavenderTheGreat/bunnysuit/blob/master/addresslist.md) - Contains pointers and comments on many addresses and moves.
 
+- [ANIMDATA docs](https://github.com/LavenderTheGreat/bunnysuit/blob/master/movedata.md) - An attempt to document the animation data (shortened to animdata) format.
+
 ## Usage
 
 > It's worth noting there are two example batch files included with this which may be enough for most people. They assume there's a file named ``SONICBATTLE.gba`` in the folder (case sensitive) alongside a folder named ``mods`` and they do the following:
