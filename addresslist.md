@@ -4,7 +4,7 @@ For bunnysuit, you'll want to use the Pointer Location address.
 
 This currently uses data collected by Glimmer and posted in https://github.com/phase/sbhs/issues/7#issuecomment-402008379 , it ignores most completely unknown entries. There's some extra data which will be added soon tm.
 
-> /!\ Warning! This uses potentially experimental techniques to find all non-sonic offsets, so they may be inaccurate! 
+> /!\ Warning! This uses potentially experimental techniques to find all non-sonic offsets, so they may be inaccurate! This also isn't entirely complete between characters, so yknow!
 
 ## Sonic
 
