@@ -38,7 +38,7 @@ This currently uses data collected by Glimmer and posted in https://github.com/p
 | Ground Power attack (Ring throw) | ``00053B38`` | ``00ED6914`` |
 | Shot attack (Down) | ``00053BAC`` | ``00ED6918`` |
 | Unknown idle reset | ``00053C98`` | ``00ED691C`` |
-| Aerial trap | ``00053CA0`` | ``00ED6920`` |
+| Aerial Power | ``00053CA0`` | ``00ED6920`` |
 | Unknown down shot/spindash data | ``00053D78`` | ``00ED6924`` |
 | Grounded Trap | ``00053E2C`` | ``00ED692C`` |
 | Unknown idle reset | ``00053EB4`` | ``00ED6934`` |
@@ -105,7 +105,7 @@ This currently uses data collected by Glimmer and posted in https://github.com/p
 | Ground Power attack (Ring throw) | ``00055A68`` | ``00ED6A2C`` |
 | Shot attack (Down) | ``00055ADC`` | ``00ED6A30`` |
 | Unknown idle reset | ``00055AE4`` | ``00ED6A34`` |
-| Aerial trap | ``00055AEC`` | ``00ED6A38`` |
+| Aerial Power | ``00055AEC`` | ``00ED6A38`` |
 | Unknown down shot/spindash data | ``00055B6C`` | ``00ED6A3C`` |
 | Grounded Trap | ``00055B7C`` | ``00ED6A44`` |
 | Unknown idle reset | ``00055BFC`` | ``00ED6A4C`` |
@@ -172,7 +172,7 @@ This currently uses data collected by Glimmer and posted in https://github.com/p
 | Ground Power attack (Ring throw) | ``00057620`` | ``00ED6B44`` |
 | Shot attack (Down) | ``00057730`` | ``00ED6B48`` |
 | Unknown idle reset | ``00057738`` | ``00ED6B4C`` |
-| Aerial trap | ``00057740`` | ``00ED6B50`` |
+| Aerial Power | ``00057740`` | ``00ED6B50`` |
 | Unknown down shot/spindash data | ``00057800`` | ``00ED6B54`` |
 | Grounded Trap | ``000578F0`` | ``00ED6B5C`` |
 | Unknown idle reset | ``0005796C`` | ``00ED6B64`` |
@@ -239,7 +239,7 @@ This currently uses data collected by Glimmer and posted in https://github.com/p
 | Ground Power attack (Ring throw) | ``00059144`` | ``00ED6C5C`` |
 | Shot attack (Down) | ``000591A8`` | ``00ED6C60`` |
 | Unknown idle reset | ``000591BC`` | ``00ED6C64`` |
-| Aerial trap | ``000592A8`` | ``00ED6C68`` |
+| Aerial Power | ``000592A8`` | ``00ED6C68`` |
 | Unknown down shot/spindash data | ``000592F8`` | ``00ED6C6C`` |
 | Grounded Trap | ``000593F0`` | ``00ED6C74`` |
 | Unknown idle reset | ``00059474`` | ``00ED6C7C`` |
@@ -306,7 +306,7 @@ This currently uses data collected by Glimmer and posted in https://github.com/p
 | Ground Power attack (Ring throw) | ``0005AF04`` | ``00ED6D74`` |
 | Shot attack (Down) | ``0005AF9C`` | ``00ED6D78`` |
 | Unknown idle reset | ``0005AFA4`` | ``00ED6D7C`` |
-| Aerial trap | ``0005AFAC`` | ``00ED6D80`` |
+| Aerial Power | ``0005AFAC`` | ``00ED6D80`` |
 | Unknown down shot/spindash data | ``0005B190`` | ``00ED6D84`` |
 | Grounded Trap | ``0005B1A0`` | ``00ED6D8C`` |
 | Unknown idle reset | ``0005B234`` | ``00ED6D94`` |
@@ -373,7 +373,7 @@ This currently uses data collected by Glimmer and posted in https://github.com/p
 | Ground Power attack (Ring throw) | ``0005C94C`` | ``00ED6E8C`` |
 | Shot attack (Down) | ``0005CBD0`` | ``00ED6E90`` |
 | Unknown idle reset | ``0005CBE0`` | ``00ED6E94`` |
-| Aerial trap | ``0005CBF0`` | ``00ED6E98`` |
+| Aerial Power | ``0005CBF0`` | ``00ED6E98`` |
 | Unknown down shot/spindash data | ``0005CE24`` | ``00ED6E9C`` |
 | Grounded Trap | ``0005CE44`` | ``00ED6EA4`` |
 | Unknown idle reset | ``0005CED0`` | ``00ED6EAC`` |
@@ -440,7 +440,7 @@ This currently uses data collected by Glimmer and posted in https://github.com/p
 | Ground Power attack (Ring throw) | ``0005ED44`` | ``00ED70BC`` |
 | Shot attack (Down) | ``0005ED4C`` | ``00ED70C0`` |
 | Unknown idle reset | ``0005ED5C`` | ``00ED70C4`` |
-| Aerial trap | ``0005ED7C`` | ``00ED70C8`` |
+| Aerial Power | ``0005ED7C`` | ``00ED70C8`` |
 | Unknown down shot/spindash data | ``0005ED84`` | ``00ED70CC`` |
 | Grounded Trap | ``0005EDB4`` | ``00ED70D4`` |
 | Unknown idle reset | ``0005EE28`` | ``00ED70DC`` |
@@ -507,7 +507,7 @@ This currently uses data collected by Glimmer and posted in https://github.com/p
 | Ground Power attack (Ring throw) | ``000605B8`` | ``00ED6FA4`` |
 | Shot attack (Down) | ``00060658`` | ``00ED6FA8`` |
 | Unknown idle reset | ``00060668`` | ``00ED6FAC`` |
-| Aerial trap | ``00060678`` | ``00ED6FB0`` |
+| Aerial Power | ``00060678`` | ``00ED6FB0`` |
 | Unknown down shot/spindash data | ``000606D8`` | ``00ED6FB4`` |
 | Grounded Trap | ``000606F8`` | ``00ED6FBC`` |
 | Unknown idle reset | ``00060794`` | ``00ED6FC4`` |
@@ -574,7 +574,7 @@ This currently uses data collected by Glimmer and posted in https://github.com/p
 | Ground Power attack (Ring throw) | ``00061E54`` | ``00ED71D4`` |
 | Shot attack (Down) | ``00061F24`` | ``00ED71D8`` |
 | Unknown idle reset | ``00061F34`` | ``00ED71DC`` |
-| Aerial trap | ``00061F44`` | ``00ED71E0`` |
+| Aerial Power | ``00061F44`` | ``00ED71E0`` |
 | Unknown down shot/spindash data | ``00061FCC`` | ``00ED71E4`` |
 | Grounded Trap | ``00061FEC`` | ``00ED71EC`` |
 | Unknown idle reset | ``0006208C`` | ``00ED71F4`` |
@@ -641,7 +641,7 @@ This currently uses data collected by Glimmer and posted in https://github.com/p
 | Ground Power attack (Ring throw) | ``00064410`` | ``00ED72EC`` |
 | Shot attack (Down) | ``000644AC`` | ``00ED72F0`` |
 | Unknown idle reset | ``000644B4`` | ``00ED72F4`` |
-| Aerial trap | ``000644BC`` | ``00ED72F8`` |
+| Aerial Power | ``000644BC`` | ``00ED72F8`` |
 | Unknown down shot/spindash data | ``0006451C`` | ``00ED72FC`` |
 | Grounded Trap | ``0006452C`` | ``00ED7304`` |
 | Unknown idle reset | ``000645C4`` | ``00ED730C`` |
